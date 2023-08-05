@@ -1,0 +1,87 @@
+ecmascript - standardization {JS feature Impl.}
+
+babel - transpiler {converts to browser compatible code}, {JSX to JS}
+
+Babel creates polyfill for older browsers
+
+- the older the browser, the more the polyfill {bundle size increases}
+
+es6 - major release [2015]
+
+---------------------
+
+index2.JS
+
+var -> function scope and hoisted on top, let and const -> block scope
+
+-------------------
+index3.JS
+
+ways to define function
+
+------------------
+
+index4.JS
+
+advanced topics
+
+//function, this
+
+-------------
+
+index7.JS
+
+closure, currying
+
+
+--------
+
+index8.JS
+
+objects in JS
+
+
+----------
+
+index9.JS
+
+passing default values
+
+index10.JS
+
+arrays
+
+----------------
+
+index11.JS
+
+prototype in JS
+
+
+---------------
+
+
+index12.JS
+
+shorthand properties in JS
+
+&&, ||, ??
+
+
+index13.JS
+
+promises in JS
+
+
+index14.JS
+
+examples of promises
+
+
+
+
+
+
+
+
+
