@@ -1,0 +1,86 @@
+DOM, CSSOM and BOM
+
+The DOM (Document Object Model), CSSOM (CSS Object Model), and BOM (Browser Object Model) are fundamental components of web development used to represent and interact with web documents, apply styles, and manage the browser itself. Here's a brief overview of each:
+
+1. **DOM (Document Object Model):**
+   - The DOM is a programming interface for web documents.
+   - It represents the structure of an HTML or XML document as a tree-like structure, where each element (e.g., HTML tags) in the document is represented as an object.
+   - Developers can use the DOM to access and manipulate the content, structure, and style of a web page.
+   - It provides a way for scripts to dynamically change the content, structure, and behavior of a web page.
+   - Common tasks include adding, removing, or modifying elements and their attributes.
+
+2. **CSSOM (CSS Object Model):**
+   - The CSSOM is a programming interface for CSS (Cascading Style Sheets).
+   - It represents the styles applied to HTML elements within a web page.
+   - Developers can use the CSSOM to read and modify CSS styles, such as changing colors, fonts, margins, and other visual properties.
+   - The CSSOM allows scripts to compute and modify CSS styles for elements and classes in real-time.
+
+3. **BOM (Browser Object Model):**
+   - The BOM represents the browser's window and its components, which are not directly related to the document structure or styles.
+   - The BOM provides a way to interact with and control the browser itself, rather than the web page content.
+   - It includes objects and properties for manipulating the browser window, opening new windows or tabs, handling cookies, navigating history, and managing user input events.
+   - The BOM also includes objects like `window` and `navigator` for gathering information about the browser environment.
+
+In summary, the DOM is used for manipulating the structure and content of web documents, the CSSOM for handling styles, and the BOM for interacting with the browser itself. These three models collectively allow developers to create dynamic, interactive, and visually appealing web applications.
+
+
+
+---- navigator clipboard
+
+
+The `navigator.clipboard` object is part of the Web Platform API and provides a programmatic way to interact with the clipboard in web applications. It allows you to read data from the clipboard, write data to the clipboard, and check the clipboard's permissions. Here's an overview of its common methods and properties:
+
+1. **`navigator.clipboard.readText()`** and **`navigator.clipboard.read()`**:
+   - These methods allow you to read data from the clipboard.
+   - `navigator.clipboard.readText()` reads plain text from the clipboard.
+   - `navigator.clipboard.read()` is more versatile and can read multiple data types, including text, images, and URLs.
+
+2. **`navigator.clipboard.writeText(text)`** and **`navigator.clipboard.write(data)`**:
+   - These methods allow you to write data to the clipboard.
+   - `navigator.clipboard.writeText(text)` writes plain text to the clipboard.
+   - `navigator.clipboard.write(data)` is more versatile and can write multiple data types.
+
+3. **`navigator.clipboard.readText()` and **`navigator.clipboard.writeText(text)`**:
+   - These methods return Promises that resolve with the clipboard data or the success of the operation.
+
+4. **`navigator.clipboard.readPermission`** and **`navigator.clipboard.writePermission`:
+   - These properties allow you to check the permission status for clipboard operations.
+   - They return a Promise that resolves to "granted" if the clipboard permission has been granted or "denied" if it has been denied.
+
+Example (reading and writing text to the clipboard):
+
+```javascript
+// Check clipboard read permission
+navigator.clipboard.readPermission
+  .then((permissionStatus) => {
+    if (permissionStatus === "granted") {
+      // Read text from the clipboard
+      navigator.clipboard.readText()
+        .then((text) => {
+          console.log("Text from clipboard:", text);
+        })
+        .catch((error) => {
+          console.error("Error reading clipboard:", error);
+        });
+    }
+  });
+
+// Check clipboard write permission
+navigator.clipboard.writePermission
+  .then((permissionStatus) => {
+    if (permissionStatus === "granted") {
+      // Write text to the clipboard
+      const textToCopy = "Hello, clipboard!";
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          console.log("Text copied to clipboard:", textToCopy);
+        })
+        .catch((error) => {
+          console.error("Error writing to clipboard:", error);
+        });
+    }
+  });
+```
+
+It's important to note that clipboard access may require user permission and is subject to browser security restrictions. Developers should handle any errors and implement appropriate user prompts for permission when using these clipboard-related APIs.
+
